@@ -1,2 +1,58 @@
-# HRD
-정보처리산업기사 과정평가형 실기 연습
+create table tbl_goods_01 (
+goods_cd number(6) NOT NULL,
+goods_nm varchar2(30),
+goods_price number(8),
+cost number(8),
+in_date date,
+primary key (goods_cd)
+);
+
+insert into tbl_goods_01 values (110001, '라면', 1050, 750, '20220302');
+insert into tbl_goods_01 values (110002, '빵', 1300, 800, '20220302');
+insert into tbl_goods_01 values (110003, '과자', 2000, 1700, '20220302');
+insert into tbl_goods_01 values (110004, '탄산음료', 1050, 750, '20220302');
+insert into tbl_goods_01 values (110005, '삼각김밥', 750, 300, '20220302');
+insert into tbl_goods_01 values (110006, '초콜릿', 1500, 1300, '20220302');
+insert into tbl_goods_01 values (110007, '우유', 850, 600, '20220302');
+
+---
+
+create table tbl_store_003 (
+store_cd varchar2(5) NOT NULL,
+store_nm varchar2(20),
+store_fg varchar2(1),
+primary key (store_cd)
+);
+
+insert into tbl_store_003 values ('A001', '이태원점', '0');
+insert into tbl_store_003 values ('A002', '한남점', '0');
+insert into tbl_store_003 values ('A003', '도원점', '0');
+insert into tbl_store_003 values ('B001', '혜화점', '1');
+insert into tbl_store_003 values ('C001', '방배점', '1');
+insert into tbl_store_003 values ('D001', '사당점', '0');
+insert into tbl_store_003 values ('D001', '흑석점', '1');
+insert into tbl_store_003 values ('E001', '금호점', '0');
+
+---
+
+create table tbl_sale_003 (
+sale_no varchar2(4) NOT NULL,
+sale_ymd date NOT NULL,
+sale_fg varchar2(1) NOT NULL,
+store_cd varchar2(5),
+goods_cd number(6),
+sale_cnt number(3),
+pay_type varchar2(2),
+primary key(sale_no)
+);
+
+insert into tbl_sale_003 values ('0001', '20220325', '1', 'A001', 110001, 2, '02');
+insert into tbl_sale_003 values ('0002', '20220325', '1', 'B001', 110003, 2, '02');
+insert into tbl_sale_003 values ('0003', '20220325', '1', 'D001', 110003, 1, '01');
+insert into tbl_sale_003 values ('0004', '20220325', '1', 'A001', 110006, 5, '02');
+insert into tbl_sale_003 values ('0005', '20220325', '1', 'C001', 110003, 2, '02');
+insert into tbl_sale_003 values ('0006', '20220325', '2', 'C001', 110003, 2, '02');
+insert into tbl_sale_003 values ('0007', '20220325', '1', 'A002', 110005, 4, '02');
+insert into tbl_sale_003 values ('0008', '20220325', '1', 'A003', 110004, 4, '02');
+insert into tbl_sale_003 values ('0009', '20220325', '1', 'B001', 110001, 2, '01');
+insert into tbl_sale_003 values ('0010', '20220325', '1', 'A002', 110006, 1, '02');
